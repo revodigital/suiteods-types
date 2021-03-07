@@ -1,8 +1,7 @@
 {
   "name": "@revodigital/suiteods-types",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Type declarations for suiteods project",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
