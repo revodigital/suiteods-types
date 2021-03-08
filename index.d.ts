@@ -3,30 +3,12 @@ export as namespace Ods;
 
 declare namespace Ods {
 
-  type IdType = 'Carta Identità' | 'Passaporto' | 'Patente'
+  type IdType = 'CARTA_ID' | 'PASSAPORTO' | 'PATENTE'
 
-  /*export enum ODSModules {
-    SCHOOL = 'SCUOLA',
-    OPS = 'OPERATORI',
-    DRONES = 'DRONI',
-    ROOT = 'ODS_ROOT',
-  }*/
   type ODSModule = 'SCUOLA' | 'OPERATORI' | 'DRONI' | 'ODS_ROOT'
-
-  /*export enum Roles {
-    BASE = 'BASE',
-    STUDENT = 'STUDENTE',
-    INSTRUCTOR = 'ISTRUTTORE',
-    ADMIN = 'AMMINISTRATORE',
-    BUSINESS_USER = 'UTENTE_AZIENDALE',
-  }*/
 
   type Role = 'BASE' | 'STUDENTE' | 'ISTRUTTORE' | 'AMMINISTRATORE' | 'UTENTE_AZIENDALE'
 
-  /*export enum UserScopes {
-    INTERNAL_MODULE = 'INTERNAL',
-    INTERNAL_WHOLE_SUITE = 'WHOLE'
-  }*/
   type UserScope = 'INTERNAL' | 'WHOLE'
 
 
