@@ -5,19 +5,30 @@ declare namespace Ods {
 
   type IdType = 'Carta Identità' | 'Passaporto' | 'Patente'
 
-  enum Roles {
-    BASE,
-    STUDENT,
-    BUSINESS,
-    INSTRUCTOR,
-    ADMIN
-  }
+  /*export enum ODSModules {
+    SCHOOL = 'SCUOLA',
+    OPS = 'OPERATORI',
+    DRONES = 'DRONI',
+    ROOT = 'ODS_ROOT',
+  }*/
+  type ODSModule = 'SCUOLA' | 'OPERATORI' | 'DRONI' | 'ODS_ROOT'
 
-  enum ODSModules {
-    OPERATORI = 'Operatori',
-    DRONI = 'Droni',
-    SCUOLA = 'Scuola'
-  }
+  /*export enum Roles {
+    BASE = 'BASE',
+    STUDENT = 'STUDENTE',
+    INSTRUCTOR = 'ISTRUTTORE',
+    ADMIN = 'AMMINISTRATORE',
+    BUSINESS_USER = 'UTENTE_AZIENDALE',
+  }*/
+
+  type Role = 'BASE' | 'STUDENTE' | 'ISTRUTTORE' | 'AMMINISTRATORE' | 'UTENTE_AZIENDALE'
+
+  /*export enum UserScopes {
+    INTERNAL_MODULE = 'INTERNAL',
+    INTERNAL_WHOLE_SUITE = 'WHOLE'
+  }*/
+  type UserScope = 'INTERNAL' | 'WHOLE'
+
 
   interface Address {
     street: string;
@@ -31,21 +42,37 @@ declare namespace Ods {
     password: string;
   }
 
-  interface DomainObject {
+  interface LoggedEntity {
+    authEntity: AuthEntity;
+    baseUser: BaseUser;
+  }
+
+  interface ModulesInstancesMap {
+    SCUOLA: string;
+    OPERATORI: string;
+    DRONI: string;
+    ODS_ROOT: string;
+  }
+
+  interface MultiTenantController {
+
+  }
+
+  interface Tenant {
     _id: string;
-    owner?: string;
+    role: Role | ODSModule;
+  }
+
+  interface TenantInfo {
+    tenant: Tenant;
+    relativeGodRole: Role;
   }
 
   interface AuthEntity extends DomainObject {
     email: string;
     password: string;
-    role: Roles;
+    role: Role;
     instanceId: string;
-  }
-
-  interface LoggedEntity {
-    authEntity: AuthEntity;
-    baseUser: BaseUser;
   }
 
   interface BaseUser extends DomainObject {
@@ -53,28 +80,48 @@ declare namespace Ods {
     lastName: string;
     phone: string;
     address: Address;
-    activeModules: ODSModules[];
+    scope: UserScope;
   }
 
-  export interface Business extends DomainObject {
+  interface BelongsToModule {
+    module: ODSModule;
+  }
+
+  interface Business extends DomainObject {
     businessName: string;
     pIva: string;
     tel: string;
     pec: string;
     recipientCode: string;
-    addressId: string;
-    roleId?: string;
+    address: Address;
   }
 
-  export interface Instructor extends BaseUser {
+  interface DomainObject {
+    _id: string;
+  }
+
+  interface HasTenant {
+    tenantInfo: TenantInfo;
+  }
+
+  interface Instructor extends BaseUser {
     licenseCode: string;
   }
 
-  export interface School extends Business {
+  interface InternalWholeSuiteUser extends BaseUser {
+    modulesInstancesMap: ModulesInstancesMap;
+  }
+
+  interface InternalModuleUser extends BaseUser, BelongsToModule {
+    moduleInstanceId: string;
+  }
+
+  interface School extends Business, HasTenant {
     cApr: number;
   }
 
-  export interface Student extends BaseUser {
+
+  interface Student extends BaseUser {
     stateIssuedIdNumber: string;
     stateIssuedIsType: IdType;
     job: string;
