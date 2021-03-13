@@ -1,6 +1,6 @@
 {
   "name": "@revodigital/suiteods-types",
-  "version": "0.2.0",
+  "version": "0.2.5",
   "description": "Type declarations for suiteods project",
   "types": "index.d.ts",
   "scripts": {
@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/revodigital/suiteods-types/issues"
   },
-  "homepage": "https://github.com/revodigital/suiteods-types#readme"
+  "homepage": "https://github.com/revodigital/suiteods-types#readme",
+  "registry": "https://registry.npmjs.org/"
 }
