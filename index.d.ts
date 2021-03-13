@@ -7,9 +7,6 @@ declare namespace Ods {
 
   type ODSModule = 'SCUOLA' | 'OPERATORI' | 'DRONI' | 'ODS_ROOT'
 
-  type ODSEntityType = 'SCHOOL' | 'USER' | 'STUDENT' | 'QUIZ_QUESTION' |
-    'QUESTION_SUBJECT' | 'QUIZ_RESULT' | 'COURSE' | 'INSTRUCTOR' | 'LESSON' | 'ENROLLMENT' | 'BUSINESSblish '
-
   type Role = 'BASE' | 'STUDENTE' | 'ISTRUTTORE' | 'AMMINISTRATORE' | 'UTENTE_AZIENDALE'
 
   type UserScope = 'INTERNAL' | 'WHOLE'
@@ -83,7 +80,6 @@ declare namespace Ods {
 
   interface DomainObject {
     _id: string;
-    entityType: ODSEntityType
   }
 
   interface HasTenant {
