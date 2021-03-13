@@ -13,9 +13,7 @@ declare namespace Ods {
 
   type QuestionStatus = 'OK' | 'BOZZA'
 
-  type AnswerNumber = 1 | 2 | 3 | 4
-
-  type QuizAnswer = [string, AnswerNumber]
+  type QuizAnswer = [string, number]
 
   type CourseStatus = 'BOZZA' | 'IN_CORSO' | 'BLOCCATO' | 'ARCHIVIATO'
 
@@ -122,7 +120,7 @@ declare namespace Ods {
     a2: string;
     a3: string;
     a4: string;
-    rightAnswer: AnswerNumber;
+    rightAnswer: number;
     isPublic: boolean;
     status: QuestionStatus;
     subjectId: string;
