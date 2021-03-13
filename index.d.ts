@@ -99,7 +99,7 @@ declare namespace Ods {
     modulesInstancesMap: ModulesInstancesMap;
   }
 
-  interface InternalModuleUser extends BaseUser {
+  interface InternalModuleUser extends BaseUser, BelongsToModule {
     moduleInstanceId: string;
   }
 
