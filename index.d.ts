@@ -7,7 +7,12 @@ declare namespace Ods {
 
   type ODSModule = 'SCUOLA' | 'OPERATORI' | 'DRONI' | 'ODS_ROOT'
 
-  type Role = 'BASE' | 'STUDENTE' | 'ISTRUTTORE' | 'AMMINISTRATORE' | 'UTENTE_AZIENDALE'
+  type Role =
+    'BASE'
+    | 'STUDENTE'
+    | 'ISTRUTTORE'
+    | 'AMMINISTRATORE'
+    | 'UTENTE_AZIENDALE'
 
   type UserScope = 'INTERNAL' | 'WHOLE'
 
@@ -16,6 +21,8 @@ declare namespace Ods {
   type QuizAnswer = [string, number]
 
   type CourseStatus = 'BOZZA' | 'IN_CORSO' | 'BLOCCATO' | 'ARCHIVIATO'
+
+  type EnrollmentStatus = 'ATTESA_PAGAMENTO' | 'DATI_MANCANTI' | 'COMPLETATA'
 
   interface Address {
     street: string;
@@ -127,7 +134,8 @@ declare namespace Ods {
     enacLicenseId: string;
   }
 
-  export interface QuestionSubject extends DomainObject, HasNameAndDescription {}
+  export interface QuestionSubject extends DomainObject, HasNameAndDescription {
+  }
 
   export interface QuizResult extends DomainObject {
     date: Date;
@@ -165,11 +173,19 @@ declare namespace Ods {
     lessonTypeId: string;
   }
 
-  export interface LessonType extends DomainObject, HasNameAndDescription {}
+  export interface LessonType extends DomainObject, HasNameAndDescription {
+  }
 
   export interface MediaContent extends DomainObject {
     bucketUrl: string;
     courseId: string;
     lessonId?: string;
+  }
+
+  export interface Enrollment extends DomainObject {
+    status: EnrollmentStatus;
+    studentId: string;
+    extrasIds: string[];
+    courseId: string[];
   }
 }
