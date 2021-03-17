@@ -186,6 +186,6 @@ declare namespace Ods {
     status: EnrollmentStatus;
     studentId: string;
     extrasIds: string[];
-    courseId: string[];
+    courseId: string;
   }
 }
