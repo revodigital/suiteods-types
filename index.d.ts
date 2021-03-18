@@ -67,6 +67,7 @@ declare namespace Ods {
     password: string;
     role: Role;
     instanceId: string;
+    firstInternalLogin?: boolean;
   }
 
   interface BaseUser extends DomainObject {
