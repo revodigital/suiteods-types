@@ -92,7 +92,7 @@ declare namespace Ods {
   }
 
   interface DomainObject {
-    _id: string;
+    _id?: string;
   }
 
   interface HasTenant {
@@ -152,6 +152,15 @@ declare namespace Ods {
     status: CourseStatus;
     instructorId: string;
     enacLicenseId: string;
+    examDate: Date;
+  }
+
+  export interface ExamResult extends DomainObject {
+    courseId: string;
+    studentId: string;
+    examDate: Date;
+    result: [number, number];
+    attachmentsUrls: string[];
   }
 
   export interface EnacLicense extends DomainObject, HasNameAndDescription {
@@ -160,6 +169,7 @@ declare namespace Ods {
 
   export interface CourseExtra extends DomainObject, HasNameAndDescription {
     price: number;
+    enrollmentId?: string;
   }
 
   export interface HasNameAndDescription {
@@ -172,6 +182,7 @@ declare namespace Ods {
     isRemote: boolean;
     remoteLink?: string;
     lessonTypeId: string;
+    courseId: string;
   }
 
   export interface LessonType extends DomainObject, HasNameAndDescription {
@@ -179,14 +190,21 @@ declare namespace Ods {
 
   export interface MediaContent extends DomainObject {
     bucketUrl: string;
-    courseId: string;
+    ownerEntityId: string;
     lessonId?: string;
   }
 
+  export interface EnrollmentMeta {
+    key: string;
+    value: any;
+  }
+
   export interface Enrollment extends DomainObject {
-    status: EnrollmentStatus;
     studentId: string;
     extrasIds: string[];
     courseId: string;
+    status: EnrollmentStatus;
+    attachmentsUrls: string[];
+    meta: EnrollmentMeta[];
   }
 }
