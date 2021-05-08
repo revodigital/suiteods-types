@@ -92,7 +92,7 @@ declare namespace Ods {
   }
 
   interface DomainObject {
-    _id?: string;
+    _id: string;
   }
 
   interface HasTenant {
@@ -136,6 +136,7 @@ declare namespace Ods {
   }
 
   export interface QuestionSubject extends DomainObject, HasNameAndDescription {
+    enacLicenseId: string;
   }
 
   export interface QuizResult extends DomainObject {

@@ -1,6 +1,6 @@
 {
   "name": "@revodigital/suiteods-types",
-  "version": "0.5.0",
+  "version": "0.5.2",
   "description": "Type declarations for suiteods project",
   "types": "index.d.ts",
   "scripts": {
